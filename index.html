@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analizador de Métodos Numéricos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-inner">
+        <div class="eyebrow">MÉTODOS NUMÉRICOS</div>
+        <h1>
+            Desafío Integrador
+            <span>Área Financiera</span>
+        </h1>
+        <p>Área financiera · Errores · Taylor · Sistemas lineales</p>
+    </div>
+</header>
+
+<nav class="nav">
+    <button class="nav-btn active" data-section="inicio">Inicio</button>
+    <button class="nav-btn" data-section="errores">Errores</button>
+    <button class="nav-btn" data-section="taylor">Taylor</button>
+    <button class="nav-btn" data-section="sistemas">Sistemas</button>
+    <button class="nav-btn" data-section="estres">Bajo estrés</button>
+    <button class="nav-btn" data-section="condicionado">Mal condicionado</button>
+</nav>
+
+<main class="container">
+
+    <section id="inicio" class="section active">
+        <div class="welcome card">
+            <div>
+                <div class="section-tag">01 · INICIO</div>
+                <h2>Experimenta con los métodos numéricos</h2>
+                <p>
+                    Ingresa tus propios datos, cambia los valores y observa
+                    cómo cambian los resultados. La página calcula automáticamente
+                    los errores, aproximaciones de Taylor y soluciones de sistemas.
+                </p>
+                <button class="primary" data-go="errores">Comenzar análisis →</button>
+            </div>
+            <div class="hero-symbol">∑</div>
+        </div>
+
+        <div class="cards-3">
+            <div class="mini-card">
+                <span class="mini-number">01</span>
+                <h3>Errores</h3>
+                <p>Calcula error absoluto, relativo y porcentual.</p>
+            </div>
+            <div class="mini-card">
+                <span class="mini-number">02</span>
+                <h3>Taylor</h3>
+                <p>Compara aproximaciones de orden 1, 2 y 3.</p>
+            </div>
+            <div class="mini-card">
+                <span class="mini-number">03</span>
+                <h3>Sistemas</h3>
+                <p>Resuelve con LU, Jacobi y Gauss-Seidel.</p>
+            </div>
+        </div>
+
+        <div class="info-strip">
+            <strong>Idea principal:</strong>
+            una pequeña variación en los datos no siempre produce una pequeña
+            variación en el resultado, especialmente en sistemas sensibles.
+        </div>
+    </section>
+
+    <section id="errores" class="section">
+        <div class="section-head">
+            <div class="section-tag">02 · TEORÍA DE ERRORES</div>
+            <h2>Compara valores financieros</h2>
+            <p>Modifica los valores y presiona calcular.</p>
+        </div>
+
+        <div class="formula-grid">
+            <div class="formula card"><b>Error absoluto</b><code>|real − registrado|</code></div>
+            <div class="formula card"><b>Error relativo</b><code>Ea / |real|</code></div>
+            <div class="formula card"><b>Error porcentual</b><code>Er × 100</code></div>
+        </div>
+
+        <div class="card">
+            <div class="toolbar">
+                <h3>Datos financieros</h3>
+                <button class="secondary" id="resetErrores">Usar datos del desafío</button>
+            </div>
+
+            <div class="input-table">
+                <div class="input-row input-head">
+                    <span>Dato</span><span>Referencia (Bs)</span><span>Registrado (Bs)</span>
+                </div>
+                <div class="input-row">
+                    <label>Ingreso diario</label>
+                    <input id="err-real-1" type="number" step="any" value="12500">
+                    <input id="err-aprox-1" type="number" step="any" value="12420">
+                </div>
+                <div class="input-row">
+                    <label>Costo operativo</label>
+                    <input id="err-real-2" type="number" step="any" value="7800">
+                    <input id="err-aprox-2" type="number" step="any" value="7860">
+                </div>
+                <div class="input-row">
+                    <label>Utilidad estimada</label>
+                    <input id="err-real-3" type="number" step="any" value="4700">
+                    <input id="err-aprox-3" type="number" step="any" value="4560">
+                </div>
+            </div>
+
+            <button class="primary" id="calcularErrores">Calcular errores</button>
+        </div>
+
+        <div id="erroresResultado" class="result-area"></div>
+    </section>
+
+    <section id="taylor" class="section">
+        <div class="section-head">
+            <div class="section-tag">03 · TAYLOR</div>
+            <h2>Aproxima el crecimiento de un capital</h2>
+            <p>Todos los parámetros son editables.</p>
+        </div>
+
+        <div class="card">
+            <div class="form-grid">
+                <div class="field">
+                    <label>Capital inicial C₀</label>
+                    <input id="tay-capital" type="number" step="any" value="10000">
+                </div>
+                <div class="field">
+                    <label>Tasa r</label>
+                    <input id="tay-rate" type="number" step="any" value="0.05">
+                    <small>Ejemplo: 0.05 = 5%</small>
+                </div>
+                <div class="field">
+                    <label>Punto de expansión t₀</label>
+                    <input id="tay-t0" type="number" step="any" value="1">
+                </div>
+                <div class="field">
+                    <label>Tiempo a aproximar t</label>
+                    <input id="tay-t" type="number" step="any" value="1.5">
+                </div>
+            </div>
+
+            <div class="equation">
+                C(t) = C₀ · e<sup>rt</sup>
+            </div>
+
+            <button class="primary" id="calcularTaylor">Calcular Taylor</button>
+        </div>
+
+        <div id="taylorResultado" class="result-area"></div>
+    </section>
+
+    <section id="sistemas" class="section">
+        <div class="section-head">
+            <div class="section-tag">04 · SISTEMAS LINEALES</div>
+            <h2>Resuelve tu propio sistema</h2>
+            <p>Ingresa una matriz 3×3 y su vector independiente.</p>
+        </div>
+
+        <div class="card">
+            <div class="toolbar">
+                <h3>Matriz aumentada [ A | b ]</h3>
+                <button class="secondary" id="resetSistema">Cargar caso ideal</button>
+            </div>
+
+            <div class="matrix-wrap">
+                <div class="matrix-label">x₁</div>
+                <div class="matrix-label">x₂</div>
+                <div class="matrix-label">x₃</div>
+                <div class="matrix-label">b</div>
+
+                <input id="a11" type="number" step="any" value="10">
+                <input id="a12" type="number" step="any" value="2">
+                <input id="a13" type="number" step="any" value="1">
+                <input id="b1" type="number" step="any" value="29">
+
+                <input id="a21" type="number" step="any" value="1">
+                <input id="a22" type="number" step="any" value="9">
+                <input id="a23" type="number" step="any" value="2">
+                <input id="b2" type="number" step="any" value="25">
+
+                <input id="a31" type="number" step="any" value="2">
+                <input id="a32" type="number" step="any" value="1">
+                <input id="a33" type="number" step="any" value="8">
+                <input id="b3" type="number" step="any" value="28">
+            </div>
+
+            <div class="settings-grid">
+                <div class="field">
+                    <label>Tolerancia</label>
+                    <input id="tol" type="number" step="any" value="0.000001">
+                </div>
+                <div class="field">
+                    <label>Máximo de iteraciones</label>
+                    <input id="maxIter" type="number" step="1" value="50">
+                </div>
+                <div class="field">
+                    <label>Vector inicial</label>
+                    <div class="initial-vector">(0, 0, 0)</div>
+                </div>
+            </div>
+
+            <div class="method-buttons">
+                <button class="method" id="btnLU">LU</button>
+                <button class="method" id="btnJacobi">Jacobi</button>
+                <button class="method" id="btnGS">Gauss-Seidel</button>
+                <button class="method accent" id="btnTodos">Comparar todos</button>
+            </div>
+        </div>
+
+        <div id="sistemaResultado" class="result-area"></div>
+        <div id="iteracionesResultado"></div>
+    </section>
+
+    <section id="estres" class="section">
+        <div class="section-head">
+            <div class="section-tag">05 · CASO BAJO ESTRÉS</div>
+            <h2>Simula una variación financiera</h2>
+            <p>
+                Se mantiene la matriz del caso ideal y se cambia el vector
+                de resultados.
+            </p>
+        </div>
+
+        <div class="stress-grid">
+            <div class="card">
+                <h3>Caso ideal</h3>
+                <div class="equations">
+                    <div>10x₁ + 2x₂ + x₃ = 29</div>
+                    <div>x₁ + 9x₂ + 2x₃ = 25</div>
+                    <div>2x₁ + x₂ + 8x₃ = 28</div>
+                </div>
+            </div>
+
+            <div class="card warning">
+                <h3>Caso bajo estrés</h3>
+                <div class="equations">
+                    <div>10x₁ + 2x₂ + x₃ = <input id="stress-b1" value="29.5" type="number" step="any"></div>
+                    <div>x₁ + 9x₂ + 2x₃ = <input id="stress-b2" value="24.5" type="number" step="any"></div>
+                    <div>2x₁ + x₂ + 8x₃ = <input id="stress-b3" value="28.4" type="number" step="any"></div>
+                </div>
+                <button class="primary" id="calcularStress">Simular estrés</button>
+            </div>
+        </div>
+
+        <div id="stressResultado" class="result-area"></div>
+    </section>
+
+    <section id="condicionado" class="section">
+        <div class="section-head">
+            <div class="section-tag">06 · MAL CONDICIONADO</div>
+            <h2>Observa la sensibilidad del sistema</h2>
+            <p>Cambia únicamente el último término independiente.</p>
+        </div>
+
+        <div class="card">
+            <div class="condition-grid">
+                <div>
+                    <h3>Sistema original</h3>
+                    <div class="equations">
+                        <div>x₁ + x₂ + x₃ = 6</div>
+                        <div>1.001x₁ + x₂ + x₃ = 6.001</div>
+                        <div>x₁ + 1.001x₂ + x₃ = <strong>6.002</strong></div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3>Sistema perturbado</h3>
+                    <div class="equations">
+                        <div>x₁ + x₂ + x₃ = 6</div>
+                        <div>1.001x₁ + x₂ + x₃ = 6.001</div>
+                        <div>x₁ + 1.001x₂ + x₃ =
+                            <input id="cond-b3" value="6.003" type="number" step="any">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="primary" id="calcularCondicionado">Comparar soluciones</button>
+        </div>
+
+        <div id="condicionadoResultado" class="result-area"></div>
+    </section>
+
+    <section class="conclusion">
+        <div class="card dark-card">
+            <div class="section-tag light">07 · CONCLUSIÓN</div>
+            <h2>¿Qué aprendemos?</h2>
+            <p>
+                Los métodos numéricos permiten analizar datos y obtener
+                aproximaciones útiles para tomar decisiones. Una pequeña
+                variación puede tener poco efecto en algunos problemas,
+                pero puede amplificarse cuando el sistema es sensible.
+            </p>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    Métodos Numéricos · Desafío Integrador · Área Financiera
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
