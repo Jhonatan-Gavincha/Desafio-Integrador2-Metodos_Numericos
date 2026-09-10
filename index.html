@@ -30,6 +30,7 @@
 
 <main class="container">
 
+    <!-- 01. INICIO -->
     <section id="inicio" class="section active">
         <div class="welcome card">
             <div>
@@ -70,6 +71,7 @@
         </div>
     </section>
 
+    <!-- 02. TEORÍA DE ERRORES -->
     <section id="errores" class="section">
         <div class="section-head">
             <div class="section-tag">02 · TEORÍA DE ERRORES</div>
@@ -113,9 +115,27 @@
             <button class="primary" id="calcularErrores">Calcular errores</button>
         </div>
 
+        <!-- Contenedor dinámico de resultados -->
         <div id="erroresResultado" class="result-area"></div>
+
+        <!-- Bloque de Interpretación y Conclusión Financiera -->
+        <div class="card analysis-block" style="margin-top: 20px;">
+            <div class="interpretation-box">
+                <h4>📊 Interpretación de Resultados</h4>
+                <p>
+                    Aunque el desvío absoluto en los costos (Bs 60.00) es menor que en los ingresos (Bs 80.00), la <strong>utilidad estimada</strong> registra el mayor error porcentual (<strong>2.9787%</strong>). Esto ocurre porque la utilidad opera sobre un margen o valor base más pequeño, amplificando el impacto de pequeñas variaciones registradas en ingresos y costos.
+                </p>
+            </div>
+            <div class="conclusion-box" style="margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                <h4>💡 Conclusión para el Mundo Financiero</h4>
+                <p>
+                    <strong>Aprendizaje clave:</strong> En auditoría y contabilidad, un error nominalmente bajo en costos o ingresos puede distorsionar de forma desproporcionada los indicadores de rentabilidad neta. Monitorear los errores relativos y porcentuales es crucial para evitar sobreestimar o subestimar la salud financiera del negocio.
+                </p>
+            </div>
+        </div>
     </section>
 
+    <!-- 03. TAYLOR -->
     <section id="taylor" class="section">
         <div class="section-head">
             <div class="section-tag">03 · TAYLOR</div>
@@ -151,9 +171,27 @@
             <button class="primary" id="calcularTaylor">Calcular Taylor</button>
         </div>
 
+        <!-- Contenedor dinámico de resultados -->
         <div id="taylorResultado" class="result-area"></div>
+
+        <!-- Bloque de Interpretación y Conclusión Financiera -->
+        <div class="card analysis-block" style="margin-top: 20px;">
+            <div class="interpretation-box">
+                <h4>📊 Interpretación de Resultados</h4>
+                <p>
+                    A medida que incrementamos el orden del polinomio de Taylor (del orden 1 al orden 3), el error de truncamiento disminuye drásticamente respecto al valor exacto calculado con la función exponencial continua $C(t) = C_0 \cdot e^{r \cdot t}$.
+                </p>
+            </div>
+            <div class="conclusion-box" style="margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                <h4>💡 Conclusión para el Mundo Financiero</h4>
+                <p>
+                    <strong>Aprendizaje clave:</strong> Los algoritmos financieros de alto rendimiento (como la valoración de opciones, swaps de tasa de interés o modelos Black-Scholes) emplean series de Taylor para aproximar curvas de rendimiento complejas sin requerir un poder computacional excesivo, garantizando estimaciones precisas en tiempo real.
+                </p>
+            </div>
+        </div>
     </section>
 
+    <!-- 04. SISTEMAS LINEALES -->
     <section id="sistemas" class="section">
         <div class="section-head">
             <div class="section-tag">04 · SISTEMAS LINEALES</div>
@@ -212,10 +250,28 @@
             </div>
         </div>
 
+        <!-- Contenedores dinámicos de resultados -->
         <div id="sistemaResultado" class="result-area"></div>
         <div id="iteracionesResultado"></div>
+
+        <!-- Bloque de Interpretación y Conclusión Financiera -->
+        <div class="card analysis-block" style="margin-top: 20px;">
+            <div class="interpretation-box">
+                <h4>📊 Interpretación de Resultados</h4>
+                <p>
+                    El método directo (Factorización LU) entrega la solución exacta de manera inmediata. Entre los métodos iterativos, <strong>Gauss-Seidel converge más rápido que Jacobi</strong> gracias a que utiliza las aproximaciones calculadas de forma instantánea dentro de la misma iteración.
+                </p>
+            </div>
+            <div class="conclusion-box" style="margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                <h4>💡 Conclusión para el Mundo Financiero</h4>
+                <p>
+                    <strong>Aprendizaje clave:</strong> En la optimización de portafolios de inversión o la distribución eficiente de presupuestos operativos entre múltiples departamentos, Gauss-Seidel es el método preferido por su bajo consumo de memoria y rapidez para procesar matrices de gran escala.
+                </p>
+            </div>
+        </div>
     </section>
 
+    <!-- 05. CASO BAJO ESTRÉS -->
     <section id="estres" class="section">
         <div class="section-head">
             <div class="section-tag">05 · CASO BAJO ESTRÉS</div>
@@ -247,9 +303,27 @@
             </div>
         </div>
 
+        <!-- Contenedor dinámico de resultados -->
         <div id="stressResultado" class="result-area"></div>
+
+        <!-- Bloque de Interpretación y Conclusión Financiera -->
+        <div class="card analysis-block" style="margin-top: 20px;">
+            <div class="interpretation-box">
+                <h4>📊 Interpretación de Resultados</h4>
+                <p>
+                    Dado que la matriz de coeficientes es <strong>estrictamente diagonal dominante</strong>, las pequeñas fluctuaciones aplicadas en el vector de requerimientos financieros ($b$) producen cambios suaves, proporcionales y totalmente estables en las variables asignadas ($x_1, x_2, x_3$).
+                </p>
+            </div>
+            <div class="conclusion-box" style="margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                <h4>💡 Conclusión para el Mundo Financiero</h4>
+                <p>
+                    <strong>Aprendizaje clave:</strong> Las pruebas de estrés (<em>Stress Testing</em>) exigen modelos con matrices bien condicionadas. Esto garantiza que ante shocks de mercado (inflación, variaciones de tasa de interés), las proyecciones financieras respondan de forma lógica sin colapsar el modelo presupuestario.
+                </p>
+            </div>
+        </div>
     </section>
 
+    <!-- 06. MAL CONDICIONADO -->
     <section id="condicionado" class="section">
         <div class="section-head">
             <div class="section-tag">06 · MAL CONDICIONADO</div>
@@ -283,18 +357,33 @@
             <button class="primary" id="calcularCondicionado">Comparar soluciones</button>
         </div>
 
+        <!-- Contenedor dinámico de resultados -->
         <div id="condicionadoResultado" class="result-area"></div>
+
+        <!-- Bloque de Interpretación y Conclusión Financiera -->
+        <div class="card analysis-block" style="margin-top: 20px;">
+            <div class="interpretation-box">
+                <h4>📊 Interpretación de Resultados</h4>
+                <p>
+                    Una variación casi imperceptible de <strong>0.001</strong> unidades en la constante provoca distorsiones masivas y desproporcionadas en la solución final. Esto se debe a que las filas de la matriz son prácticamente dependientes (matriz casi singular).
+                </p>
+            </div>
+            <div class="conclusion-box" style="margin-top: 15px; border-top: 1px solid #e2e8f0; padding-top: 15px;">
+                <h4>💡 Conclusión para el Mundo Financiero</h4>
+                <p>
+                    <strong>Aprendizaje clave:</strong> En gestión de riesgos y valoración de activos (VAR), operar con sistemas mal condicionados puede arruinar un análisis corporativo. Un pequeño error de redondeo en los datos de entrada puede generar decisiones de inversión completamente equivocadas.
+                </p>
+            </div>
+        </div>
     </section>
 
+    <!-- 07. CONCLUSIÓN GENERAL -->
     <section class="conclusion">
         <div class="card dark-card">
-            <div class="section-tag light">07 · CONCLUSIÓN</div>
-            <h2>¿Qué aprendemos?</h2>
+            <div class="section-tag light">07 · CONCLUSIÓN GENERAL</div>
+            <h2>¿Qué aprendemos en el ámbito financiero?</h2>
             <p>
-                Los métodos numéricos permiten analizar datos y obtener
-                aproximaciones útiles para tomar decisiones. Una pequeña
-                variación puede tener poco efecto en algunos problemas,
-                pero puede amplificarse cuando el sistema es sensible.
+                Los métodos numéricos no son solo herramientas matemáticas abstractas, sino el pilar del modelado financiero moderno. Nos enseñan que medir la precisión de los datos (teoría de errores), simplificar proyecciones complejas (Taylor) y validar la estabilidad de nuestros sistemas frente a variaciones del mercado (sistemas lineales e inestabilidad) son pasos obligatorios para tomar decisiones corporativas confiables y fundamentadas.
             </p>
         </div>
     </section>
